@@ -1,61 +1,60 @@
-# Spec Compliance Reviewer Prompt Template
+# 스펙 준수 검토 Subagent 프롬프트 템플릿
 
-Use this template when dispatching a spec compliance reviewer subagent.
+스펙 준수 검토 subagent를 디스패치할 때 이 템플릿을 사용하세요.
 
-**Purpose:** Verify implementer built what was requested (nothing more, nothing less)
+**목적:** 구현자가 요청된 것을 (더도 말고 덜도 말고) 만들었는지 검증
 
 ```
 Task tool (general-purpose):
-  description: "Review spec compliance for Task N"
+  description: "작업 N 스펙 준수 검토"
   prompt: |
-    You are reviewing whether an implementation matches its specification.
+    당신은 구현이 스펙과 일치하는지 검토합니다.
 
-    ## What Was Requested
+    ## 요청된 내용
 
-    [FULL TEXT of task requirements]
+    [작업 요구사항 전문]
 
-    ## What Implementer Claims They Built
+    ## 구현자가 만들었다고 주장하는 것
 
-    [From implementer's report]
+    [구현자의 보고서에서 가져온 내용]
 
-    ## CRITICAL: Do Not Trust the Report
+    ## 중요: 보고서를 신뢰하지 말 것
 
-    The implementer finished suspiciously quickly. Their report may be incomplete,
-    inaccurate, or optimistic. You MUST verify everything independently.
+    구현자가 의심스럽게 빠르게 완료했습니다. 보고서는 불완전하거나, 부정확하거나, 낙관적일 수 있습니다. 모든 것을 독립적으로 검증해야 합니다.
 
-    **DO NOT:**
-    - Take their word for what they implemented
-    - Trust their claims about completeness
-    - Accept their interpretation of requirements
+    **하지 말 것:**
+    - 구현자의 말을 그대로 믿지 마세요
+    - 완전성에 대한 주장을 신뢰하지 마세요
+    - 요구사항 해석을 그대로 수용하지 마세요
 
-    **DO:**
-    - Read the actual code they wrote
-    - Compare actual implementation to requirements line by line
-    - Check for missing pieces they claimed to implement
-    - Look for extra features they didn't mention
+    **해야 할 것:**
+    - 실제 작성된 코드를 읽으세요
+    - 실제 구현을 요구사항과 줄 단위로 비교하세요
+    - 구현했다고 주장하지만 누락된 부분을 확인하세요
+    - 언급하지 않은 추가 기능을 찾으세요
 
-    ## Your Job
+    ## 작업 내용
 
-    Read the implementation code and verify:
+    구현 코드를 읽고 다음을 검증하세요:
 
-    **Missing requirements:**
-    - Did they implement everything that was requested?
-    - Are there requirements they skipped or missed?
-    - Did they claim something works but didn't actually implement it?
+    **누락된 요구사항:**
+    - 요청된 모든 것을 구현했는가?
+    - 건너뛰거나 놓친 요구사항이 있는가?
+    - 작동한다고 주장했지만 실제로 구현하지 않은 것이 있는가?
 
-    **Extra/unneeded work:**
-    - Did they build things that weren't requested?
-    - Did they over-engineer or add unnecessary features?
-    - Did they add "nice to haves" that weren't in spec?
+    **불필요한 추가 작업:**
+    - 요청하지 않은 것을 만들었는가?
+    - 과도하게 설계하거나 불필요한 기능을 추가했는가?
+    - 스펙에 없는 "있으면 좋은" 것을 추가했는가?
 
-    **Misunderstandings:**
-    - Did they interpret requirements differently than intended?
-    - Did they solve the wrong problem?
-    - Did they implement the right feature but wrong way?
+    **오해:**
+    - 의도와 다르게 요구사항을 해석했는가?
+    - 잘못된 문제를 해결했는가?
+    - 올바른 기능을 잘못된 방식으로 구현했는가?
 
-    **Verify by reading code, not by trusting report.**
+    **보고서가 아닌 코드를 읽어서 검증하세요.**
 
-    Report:
-    - ✅ Spec compliant (if everything matches after code inspection)
-    - ❌ Issues found: [list specifically what's missing or extra, with file:line references]
+    보고:
+    - ✅ Spec compliant (코드 검사 후 모든 것이 일치하는 경우)
+    - ❌ Issues found: [누락되거나 추가된 내용을 file:line 참조와 함께 구체적으로 나열]
 ```

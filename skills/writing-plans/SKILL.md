@@ -108,6 +108,7 @@ git commit -m "feat: add specific feature"
 Every step must contain the actual content an engineer needs. These are **plan failures** — never write them:
 - "TBD", "TODO", "implement later", "fill in details"
 - "Add appropriate error handling" / "add validation" / "handle edge cases"
+- "Add just-in-case guards" / "guard against hypothetical misuse" / "add failure handling not required by requirements, reproduced bugs, or existing contracts"
 - "Write tests for the above" (without actual test code)
 - "Similar to Task N" (repeat the code — the engineer may be reading tasks out of order)
 - Steps that describe what to do without showing how (code blocks required for code steps)
@@ -117,6 +118,7 @@ Every step must contain the actual content an engineer needs. These are **plan f
 - Exact file paths always
 - Complete code in every step — if a step changes code, show the code
 - Exact commands with expected output
+- Avoid just-in-case guards; specify only the failure handling required by requirements, reproduced bugs, or existing contracts
 - DRY, YAGNI, TDD, frequent commits
 
 ## Self-Review
